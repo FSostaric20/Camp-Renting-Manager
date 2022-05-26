@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Camp_Renting_Manager
 {
-    public partial class Form1 : Form
+    public partial class FrmSmjestajneJedinice : Form
     {
-        public Form1()
+        public FrmSmjestajneJedinice()
         {
             InitializeComponent();
+        }
+
+        private void FrmSmjestajneJedinice_Load(object sender, EventArgs e)
+        {
+            DBLayer.DB.SetConfiguration("fsostaric20_DB", "fsostaric20", "vOze6ERT");
         }
     }
 }
