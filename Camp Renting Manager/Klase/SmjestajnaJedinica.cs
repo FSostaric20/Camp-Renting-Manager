@@ -15,10 +15,6 @@ namespace Camp_Renting_Manager
         public bool Dostupna { get; set; }
 
 
-        public static int Hadobro()
-        {
-            
-            return 0;
-        }
+        
     }
 }
