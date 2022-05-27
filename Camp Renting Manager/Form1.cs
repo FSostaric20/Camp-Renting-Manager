@@ -20,6 +20,12 @@ namespace Camp_Renting_Manager
         private void FrmSmjestajneJedinice_Load(object sender, EventArgs e)
         {
             DBLayer.DB.SetConfiguration("fsostaric20_DB", "fsostaric20", "vOze6ERT");
+            ShowSmjestajneJedinice();
+        }
+        private void ShowSmjestajneJedinice()
+        {
+            List<SmjestajnaJedinica> smjestajneJedinice = Repozitoriji.SmjestajnaJedinicaRepozitorij.GetSmjestajneJedinice();
+            DgvSmjestajneJedinice.DataSource = smjestajneJedinice;
         }
     }
 }

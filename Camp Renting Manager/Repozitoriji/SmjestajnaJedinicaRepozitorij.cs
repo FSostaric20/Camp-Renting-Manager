@@ -29,7 +29,7 @@ namespace Camp_Renting_Manager.Repozitoriji
         public static List<SmjestajnaJedinica> GetSmjestajneJedinice()
         {
             List<SmjestajnaJedinica> SmjestajneJedinice = new List<SmjestajnaJedinica>();
-            string sql = "SELECT * FROM Students";
+            string sql = "SELECT * FROM SmjestajneJedinice";
             DBLayer.DB.OpenConnection();
             var reader = DBLayer.DB.GetDataReader(sql);
             while (reader.Read())
@@ -45,7 +45,16 @@ namespace Camp_Renting_Manager.Repozitoriji
         private static SmjestajnaJedinica CreateObject(SqlDataReader reader)
         {
             int oznakaSJ = int.Parse(reader["OznakaSJ"].ToString());
-            int kapacitet = int.Parse(reader["Kapacitet"].ToString());
+            string kapacitet;
+            if (reader["Kapacitet"].ToString() == "")
+            {
+                kapacitet = "Nije ograničen";
+
+            }
+            else {
+                kapacitet = reader["Kapacitet"].ToString();
+            }
+            
             string vrsta = reader["Vrsta"].ToString();
             string sektor = reader["Sektor"].ToString();
             bool dostupna = (bool)reader["Dostupna"];
