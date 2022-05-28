@@ -30,7 +30,6 @@
         {
             this.DgvSmjestajneJedinice = new System.Windows.Forms.DataGridView();
             this.BtnSj = new System.Windows.Forms.Button();
-            this.BtnRezervacija = new System.Windows.Forms.Button();
             this.BtnOdjava = new System.Windows.Forms.Button();
             this.BtnObrisi = new System.Windows.Forms.Button();
             this.BtnUredi = new System.Windows.Forms.Button();
@@ -56,22 +55,13 @@
             // 
             // BtnSj
             // 
-            this.BtnSj.Location = new System.Drawing.Point(687, 508);
+            this.BtnSj.Location = new System.Drawing.Point(687, 551);
             this.BtnSj.Name = "BtnSj";
             this.BtnSj.Size = new System.Drawing.Size(151, 37);
             this.BtnSj.TabIndex = 1;
             this.BtnSj.Text = "Nova smještajna jedinica";
             this.BtnSj.UseVisualStyleBackColor = true;
             this.BtnSj.Click += new System.EventHandler(this.BtnSj_Click);
-            // 
-            // BtnRezervacija
-            // 
-            this.BtnRezervacija.Location = new System.Drawing.Point(687, 551);
-            this.BtnRezervacija.Name = "BtnRezervacija";
-            this.BtnRezervacija.Size = new System.Drawing.Size(151, 37);
-            this.BtnRezervacija.TabIndex = 2;
-            this.BtnRezervacija.Text = "Nova rezervacija";
-            this.BtnRezervacija.UseVisualStyleBackColor = true;
             // 
             // BtnOdjava
             // 
@@ -211,7 +201,6 @@
             this.Controls.Add(this.BtnUredi);
             this.Controls.Add(this.BtnObrisi);
             this.Controls.Add(this.BtnOdjava);
-            this.Controls.Add(this.BtnRezervacija);
             this.Controls.Add(this.BtnSj);
             this.Controls.Add(this.DgvSmjestajneJedinice);
             this.Name = "FrmSmjestajneJedinice";
@@ -229,7 +218,6 @@
 
         private System.Windows.Forms.DataGridView DgvSmjestajneJedinice;
         private System.Windows.Forms.Button BtnSj;
-        private System.Windows.Forms.Button BtnRezervacija;
         private System.Windows.Forms.Button BtnOdjava;
         private System.Windows.Forms.Button BtnObrisi;
         private System.Windows.Forms.Button BtnUredi;
