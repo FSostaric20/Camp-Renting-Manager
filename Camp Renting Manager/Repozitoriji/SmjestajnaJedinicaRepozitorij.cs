@@ -9,6 +9,7 @@ namespace Camp_Renting_Manager.Repozitoriji
 {
     public class SmjestajnaJedinicaRepozitorij
     {
+        
         public static SmjestajnaJedinica GetSmjestajnaJedinica(int id)
         {
             SmjestajnaJedinica smjestajnaJedinica = null;
@@ -36,6 +37,7 @@ namespace Camp_Renting_Manager.Repozitoriji
             {
                 SmjestajnaJedinica smjestajnaJedinica = CreateObject(reader);
                 SmjestajneJedinice.Add(smjestajnaJedinica);
+                
             }
             reader.Close();
             DBLayer.DB.CloseConnection();
@@ -46,7 +48,7 @@ namespace Camp_Renting_Manager.Repozitoriji
         {
             int oznakaSJ = int.Parse(reader["OznakaSJ"].ToString());
             string kapacitet;
-            if (reader["Kapacitet"].ToString() == "")
+            if (reader["Kapacitet"].ToString() == "" || reader["Kapacitet"].ToString() == "0")
             {
                 kapacitet = "Nije ograničen";
 
@@ -68,6 +70,42 @@ namespace Camp_Renting_Manager.Repozitoriji
             };
             return smjestajnaJedinica;
 
+        }
+        
+        public static void InsertSmjestajnaJedinica(string Sektor, string Vrsta, string Kapacitet)
+        {
+            string sql ="";
+            int kap = int.Parse(Kapacitet);
+            int NajvecaOznaka = 1;
+            bool Dostupna = true;
+            List<SmjestajnaJedinica> popis = GetSmjestajneJedinice();
+            foreach(SmjestajnaJedinica smjestajnajedinica in popis)
+            {
+                NajvecaOznaka++;
+            }
+            if (kap != 0)
+            {
+                sql += $"INSERT INTO SmjestajneJedinice (OznakaSJ,Kapacitet,Vrsta,Sektor,Dostupna) VALUES ('{NajvecaOznaka}','{kap}','{Vrsta}','{Sektor}',+'{Dostupna}')";
+            }
+            else
+            {
+                
+                sql = $"INSERT INTO SmjestajneJedinice (OznakaSJ,Kapacitet,Vrsta,Sektor,Dostupna) VALUES ('{NajvecaOznaka}','','{Vrsta}','{Sektor}',+'{Dostupna}')";
+            }
+            
+            
+            DBLayer.DB.OpenConnection();
+            DBLayer.DB.ExecuteCommand(sql);
+            DBLayer.DB.CloseConnection();
+        }
+
+        public static void DeleteSmjestajnaJedinica(SmjestajnaJedinica SJ)
+        {
+            int ID = SJ.OznakaSJ;
+            string sql = $"DELETE FROM SmjestajneJedinice WHERE OznakaSJ = {ID}";
+            DBLayer.DB.OpenConnection();
+            DBLayer.DB.ExecuteCommand(sql);
+            DBLayer.DB.CloseConnection();
         }
     }
 }

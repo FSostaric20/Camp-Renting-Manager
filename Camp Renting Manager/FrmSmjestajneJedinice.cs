@@ -27,5 +27,25 @@ namespace Camp_Renting_Manager
             List<SmjestajnaJedinica> smjestajneJedinice = Repozitoriji.SmjestajnaJedinicaRepozitorij.GetSmjestajneJedinice();
             DgvSmjestajneJedinice.DataSource = smjestajneJedinice;
         }
+
+        private void BtnSj_Click(object sender, EventArgs e)
+        {
+            new FrmUnosSJ().ShowDialog();
+        }
+
+        private void BtnOdjava_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void BtnObrisi_Click(object sender, EventArgs e)
+        {
+            SmjestajnaJedinica SelectedSJ = DgvSmjestajneJedinice.CurrentRow.DataBoundItem as SmjestajnaJedinica;
+            if (SelectedSJ != null)
+            {
+                Repozitoriji.SmjestajnaJedinicaRepozitorij.DeleteSmjestajnaJedinica(SelectedSJ);
+            }
+            ShowSmjestajneJedinice();
+        }
     }
 }
