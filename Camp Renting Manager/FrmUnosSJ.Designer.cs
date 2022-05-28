@@ -87,6 +87,7 @@
             // 
             // cboVrsta
             // 
+            this.cboVrsta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVrsta.FormattingEnabled = true;
             this.cboVrsta.Items.AddRange(new object[] {
             "Mobilna Kucica",
@@ -100,6 +101,7 @@
             // 
             // cboSektor
             // 
+            this.cboSektor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSektor.FormattingEnabled = true;
             this.cboSektor.Items.AddRange(new object[] {
             "A1",

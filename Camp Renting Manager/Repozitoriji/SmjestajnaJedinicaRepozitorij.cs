@@ -107,5 +107,14 @@ namespace Camp_Renting_Manager.Repozitoriji
             DBLayer.DB.ExecuteCommand(sql);
             DBLayer.DB.CloseConnection();
         }
+
+        public static void UpdateSmjestajnaJedinica(SmjestajnaJedinica SJ)
+        {
+            int kap = int.Parse(SJ.Kapacitet);
+            string sql = $"UPDATE SmjestajneJedinice SET Kapacitet ={kap}, Vrsta='{SJ.Vrsta}', Sektor='{SJ.Sektor}', Dostupna='{SJ.Dostupna}' WHERE OznakaSJ = {SJ.OznakaSJ}";
+            DBLayer.DB.OpenConnection();
+            DBLayer.DB.ExecuteCommand(sql);
+            DBLayer.DB.CloseConnection();
+        }
     }
 }
